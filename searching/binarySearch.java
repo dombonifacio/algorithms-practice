@@ -17,17 +17,24 @@ class binarySearch {
          // use two pointers technique: point at first element and last index
         int leftIndex = 0;
         int rightIndex = arr.length - 1;
+
         // initialize to -1 if not first occurence if not found
         int result = -1;
         
-
+        // check first if first index already matches the target
+        if (arr[leftIndex] == target){
+            result = leftIndex;
+            return result;
+            
+        }
         while (leftIndex <= rightIndex){
             
             int midIndex = (leftIndex + rightIndex) / 2;
             // checks if target is the first occurence
             // Middle index can sit the same at left pointer. Make sure left of middle index is not a target, because that won't be first occurence anymore.
         
-            if (arr[midIndex] == target  && arr[midIndex - 1] != target){
+            // arr[midIndex] == target  && arr[midIndex - 1] != target will occur an error if first occurence is at the very first index
+            if (arr[midIndex] == target  && arr[midIndex - 1] != target ){ 
                
                 // result is the first occurence
                 result = midIndex;
@@ -37,6 +44,8 @@ class binarySearch {
 
                 
             }
+            
+            
             // keep going if not found
             else if (target > arr[midIndex]){
                 // change the left index to the right of the middle index or + 1
@@ -70,9 +79,9 @@ class binarySearch {
       
     }
     public static void main(String[] args){
-        
-        int[] arr = {1, 3, 5, 5, 5, 5, 67, 123, 125};
-        int target = 5; // should return index 2
+        // 1,2,3,1, 5,4,2,1,3,1
+        int[] arr = {1, 1, 1, 1, 2, 2, 3, 3, 4, 5};
+        int target = 3; // should return index 2
         binarySearch search = new binarySearch();
         System.out.println(search.getFirstIndex(arr, target));
         System.out.println(search.count(arr, target));
