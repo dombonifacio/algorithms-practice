@@ -1,12 +1,14 @@
 class binarySearch {
-    
 
+    // Must implement this with decrease and conquer, that's why we use binary search,
 
-
-    // ********* BASIC EXPLANATION *********
-    // Array will have to be sorted.
-    // We can have two pointer, pointing at the first element and last index
-    // Another pointer to point at the middle of the array.
+    // ********* BASIC EXPLANATION OF BINARY SEARCH *********
+    // 1. Left pointer pointing at first element, right pointer pointing at n - 1
+    // 2. Middle pointer to point at middle by (left + right) /  2
+    // 3. Middle pointer will be responsible for decreasing and returning right index of specific target
+    // 4. If target is greater than middle index, go to the right subarray (split array) by adjusting left pointer to mid + 1
+    // 5. If target is less than, go to the left subarray by adjusting right pointer tto mid - 1
+    // 6. REMEMBER: Left should never collide with Right pointer! Make it Left <= Right
     // We can grab the middle element by adding the index of first and last and dividing them both by 2
 
     //          0  1  2   3   4   5   6  7
@@ -16,30 +18,7 @@ class binarySearch {
 
 
 
-    // search for the index of the key you're looking for
-    int getIndex(int[] arr, int target){
-
-        // use two pointers technique: point at first element and last index
-        int leftIndex = 0;
-        int rightIndex = arr.length - 1;
-        
-
-        while (leftIndex <= rightIndex){
-            int midIndex = (leftIndex + rightIndex) / 2;
-            if (arr[midIndex] == target){
-                return midIndex;
-            }
-            else if (target > arr[midIndex]){
-                // change the left index to the right of the middle index or + 1
-                leftIndex = midIndex + 1;
-            }
-            else {
-                rightIndex = midIndex - 1;
-            }
-        }
-        
-        return -1;
-    }
+    
 
     int getFirstIndex(int arr[], int target){
          // use two pointers technique: point at first element and last index
@@ -50,12 +29,15 @@ class binarySearch {
 
         while (leftIndex <= rightIndex){
             int midIndex = (leftIndex + rightIndex) / 2;
+            // checks if target is the first occurence
             if (arr[midIndex] == target  && arr[midIndex - 1] != target){
                
                 // result is the first occurence
                 result = midIndex;
-                // the right index is the last occurence
-                return arr[rightIndex];
+                
+                return result;
+
+                // we can push the indexes to an array then use those indexes to access like a nested index
                 
             }
             else if (target > arr[midIndex]){
