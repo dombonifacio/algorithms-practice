@@ -9,27 +9,24 @@ class binarySearch {
     // 4. If target is greater than middle index, go to the right subarray (split array) by adjusting left pointer to mid + 1
     // 5. If target is less than, go to the left subarray by adjusting right pointer tto mid - 1
     // 6. REMEMBER: Left should never collide with Right pointer! Make it Left <= Right
-    // We can grab the middle element by adding the index of first and last and dividing them both by 2
 
-    //          0  1  2   3   4   5   6  7
-    // Array: [ 3, 4, 9, 10, 15, 20, 25, 35 ] --> Target: 9
-    // 
-    
+    // Array needs to be sorted, otherwise, middle pointer wouldn't know which subarray to solve
 
-
-
-    
 
     int getFirstIndex(int arr[], int target){
          // use two pointers technique: point at first element and last index
         int leftIndex = 0;
         int rightIndex = arr.length - 1;
+        // initialize to -1 if not first occurence if not found
         int result = -1;
         
 
         while (leftIndex <= rightIndex){
+            
             int midIndex = (leftIndex + rightIndex) / 2;
             // checks if target is the first occurence
+            // Middle index can sit the same at left pointer. Make sure left of middle index is not a target, because that won't be first occurence anymore.
+        
             if (arr[midIndex] == target  && arr[midIndex - 1] != target){
                
                 // result is the first occurence
@@ -37,19 +34,40 @@ class binarySearch {
                 
                 return result;
 
-                // we can push the indexes to an array then use those indexes to access like a nested index
+
                 
             }
+            // keep going if not found
             else if (target > arr[midIndex]){
                 // change the left index to the right of the middle index or + 1
                 leftIndex = midIndex + 1;
             }
             else {
+                // if target is less than middle index, the target is in the left subarray
                 rightIndex = midIndex - 1;
             }
         }
         
         return result;
+    }
+
+    int count(int[] arr, int target){
+        // get the first index
+
+        int left = getFirstIndex(arr, target);
+        int counter = 0;
+        // index to keep moving in the array or use for counting
+        int index = left;
+        // start with the first occurence in array
+
+        while (arr[index] == target && index < arr.length){
+            counter++;
+            index++;
+        }
+        return counter;
+        // keep counting until the elements in the array matches with the target. prevent going over the array as well
+
+      
     }
     public static void main(String[] args){
         
@@ -57,6 +75,7 @@ class binarySearch {
         int target = 5; // should return index 2
         binarySearch search = new binarySearch();
         System.out.println(search.getFirstIndex(arr, target));
+        System.out.println(search.count(arr, target));
 
     }
 }
