@@ -55,17 +55,51 @@ class KeyOccurence {
 
         return counter;
     }
-    public static void main(String[] args){
-        KeyOccurence sol = new KeyOccurence();
-        int[] arr = {1, 0, 2, 2, 3};
 
-        int func = sol.divideConquer(arr, 2);
-        if (func == -1){
-            System.out.println("Target not found");
-        }
-        else{
-            System.out.println("Key Occurence: " + func);
-        }
+
+    public boolean IsAnagram(char[] wordOne, char[] wordTwo){
+        // check first if two words are the same length
+        
+
+
+        return false;
+    }
+
+    
+    public static void main(String[] args){
+
+        // convert all the letters to lowercases
+     
+        
+        KeyOccurence sol = new KeyOccurence();
+
+        // Tech
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // *************** Divide and Conquer ***************
+        // int[] arr = {1, 0, 2, 2, 3};
+
+        // int func = sol.divideConquer(arr, 2);
+        // if (func == -1){
+        //     System.out.println("Target not found");
+        // }
+        // else{
+        //     System.out.println("Key Occurence: " + func);
+        // }
         
     }
 }
