@@ -30,7 +30,6 @@ public class AnagramTwo {
     }
 
     public static void main(String[] args){
-        System.out.println("Hello");
 
         String anagramOne = "Silent";
         String anagramTwo = "Listen";
