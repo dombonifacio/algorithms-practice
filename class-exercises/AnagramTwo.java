@@ -26,16 +26,14 @@ public class AnagramTwo {
             }
         }
 
-
-
         return false;
     }
 
     public static void main(String[] args){
         System.out.println("Hello");
 
-        String anagramOne = "race";
-        String anagramTwo = "care";
+        String anagramOne = "Silent";
+        String anagramTwo = "Listen";
         
 
         // Our char array words
